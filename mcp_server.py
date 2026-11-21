@@ -18,7 +18,7 @@ from marketscope_assessment_upgrade import (
     calculate_tam_sam,
 )
 
-mmcp = FastMCP(
+mcp = FastMCP(
     "MarketScope",
     host="0.0.0.0",
     port=int(os.getenv("PORT", "10000"))
