@@ -1,3 +1,4 @@
+import os
 import json
 import sys
 from contextlib import redirect_stdout
@@ -17,7 +18,11 @@ from marketscope_assessment_upgrade import (
     calculate_tam_sam,
 )
 
-mcp = FastMCP("MarketScope")
+mmcp = FastMCP(
+    "MarketScope",
+    host="0.0.0.0",
+    port=int(os.getenv("PORT", "10000"))
+)
 
 
 def _json(data: Any) -> str:
@@ -232,4 +237,4 @@ def calculate_gpu_market(
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
